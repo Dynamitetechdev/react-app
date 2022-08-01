@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import AboutUs from "./components/aboutus";
+import Banner from "./components/banner";
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
+import PopUp from "./components/popup";
+import Services from "./components/services";
+import WhatWeDo from "./components/whatwedo";
+import { useState } from "react";
 function App() {
+  const [buttonToTriggerPopUp, setbuttonToTriggerPopUp] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar
+        buttonToTriggerPopUp={buttonToTriggerPopUp}
+        setbuttonToTriggerPopUp={setbuttonToTriggerPopUp}
+      />
+      <PopUp
+        triggerConditionals={buttonToTriggerPopUp}
+        buttonToTriggerPopUp={buttonToTriggerPopUp}
+        setbuttonToTriggerPopUp={setbuttonToTriggerPopUp}
+      />
+      <Banner />
+      <WhatWeDo />
+      <Services />
+      <AboutUs />
+      <Footer
+        buttonToTriggerPopUp={buttonToTriggerPopUp}
+        setbuttonToTriggerPopUp={setbuttonToTriggerPopUp}
+      />
     </div>
   );
 }
